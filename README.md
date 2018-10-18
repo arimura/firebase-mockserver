@@ -8,7 +8,7 @@ Put files
 #endpoints with ip limitation
 $ echo "hoge" > content/hoge
 #static files
-$ echo "huga" > public/fuga.html
+$ echo "fuga" > public/fuga.html
 ```
 
 Run locally
