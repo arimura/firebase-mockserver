@@ -22,3 +22,7 @@ Run on Cloud Functions
 ```
 $ firebase deploy --only functions,hosting
 ```
+
+## Macros in Endpoints
+- ${mockserver_protocol}
+- ${mockserver_host}
