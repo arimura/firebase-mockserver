@@ -16,7 +16,7 @@ exports.mockendpoint = functions.https.onRequest((req, res) => {
     }
   }
 
-  const filename = req.path;
+  const filename = req.path.replace(/\/$/,'');
   if(!fs.existsSync(`./content/${filename}`)){
     res.status(404).send("404 not found");
     return;
