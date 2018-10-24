@@ -5,3 +5,4 @@ public/*
 functions/.runtimeconfig.json
 functions/content/*
 .firebase/*
+firebase-debug.log
