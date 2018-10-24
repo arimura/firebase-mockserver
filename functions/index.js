@@ -23,6 +23,7 @@ exports.mockendpoint = functions.https.onRequest((req, res) => {
   }
   const content = fs.readFileSync(`./content/${filename}`).toString();
   const contentExpanded = content.replace(/\${mockserver_host}/g,req.get('host'))
-                                 .replace(/\${mockserver_protocol}/g,req.protocol);
+                                 .replace(/\${mockserver_protocol}/g,req.protocol)
+                                 .replace(/\${escape_newline}\n/g, "\\n");
   res.status(200).send(contentExpanded);
 });
