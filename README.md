@@ -1,27 +1,44 @@
-# firabase mockserver
+# Firabase Mockserver
 
-mockserver for sharing mock endpoints with your team.
+Your team's mock server with https, ip limitation and data manaing GUI. 
 
-## Usage
-Put files
-```
-#endpoints with ip limitation
-$ echo "hoge" > content/hoge
-#static files
-$ echo "fuga" > public/fuga.html
-```
+## Prerequisite
+- firebase account
+- [firebase cli](https://firebase.google.com/docs/cli/)
+- [gsutil](https://cloud.google.com/storage/docs/gsutil_install)
 
-Run locally
+## Usage 
+### Set up firebase project
+
 ```
-$ firebase functions:config:set rule.allowed_ip="your-ip" 
-$ firebase functions:config:get > functions/.runtimeconfig.json
-$ firebase serve --only functions,hosting
+firebase use --add your-project-name
+cd functions/
+npm install
 ```
 
-Run on Cloud Functions
+### Upload data for mock enpdpoints
+
+- Create `public` and `content` dirrectories on cloud storage and put files in those dirrectories.
+  - `public`: static files.
+  - `content`: dynamic contents with macros.
+
+### Set up ip limitation
 ```
-$ firebase deploy --only functions,hosting
+$ firebase functions:config:set rule.allowed_ip="allowed-ip" 
 ```
+
+### deploy
+```
+make MS_BUCKET=gs://your-bucket-name sync
+make MS_BUCKET=gs://your-bucket-name deploy
+```
+
+Endpoints which have same path as your uploaded files are available.
+
+```
+curl https://your-host-name/uploaded-file-name
+```
+
 
 ## Macros in Endpoints
 - ${mockserver_protocol}
