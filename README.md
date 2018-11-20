@@ -29,7 +29,7 @@ $ firebase functions:config:set rule.allowed_ip="allowed-ip"
 
 ### deploy
 ```
-make MS_BUCKET=gs://your-bucket-name sync
+make MS_BUCKET=gs://your-bucket-name sync-local-with-cloud
 make deploy
 ```
 
