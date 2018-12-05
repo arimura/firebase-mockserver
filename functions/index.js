@@ -24,6 +24,7 @@ exports.mockendpoint = functions.https.onRequest((req, res) => {
   const content = fs.readFileSync(`./content/${filename}`).toString();
   const contentExpanded = content.replace(/\${mockserver_host}/g,req.headers['x-forwarded-host'])
                                  .replace(/\${mockserver_protocol}/g,req.protocol)
-                                 .replace(/\${escape_newline}\n/g, "\\n");
+                                 .replace(/\${escape_newline}\n/g, "\\n")
+                                 .replace(/\${timestamp}/g, Math.floor(Date.now() / 1000));
   res.status(200).send(contentExpanded);
 });

@@ -44,3 +44,4 @@ curl https://your-host-name/uploaded-file-name
 - ${mockserver_protocol}
 - ${mockserver_host}
 - ${escape_newline}
+- ${timestamp}
